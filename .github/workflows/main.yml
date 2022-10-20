@@ -13,9 +13,12 @@ jobs:
     steps:
       # Check-out your repository.
       - name: Checkout
-        uses: actions/checkout@v2
-
-
+        uses: actions/checkout@v2  
+ 
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag gopinath003/docker-image-autobuild:latest 
+      - name: push the docker image
+        run: docker login -u gopinath003 -p ${{secrets.DOCKER_TOKEN}} && docker push gopinath003/docker-image-autobuild:latest
 
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
         uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
