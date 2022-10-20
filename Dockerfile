@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-COPY Dockerfile ./Dockerfile
+COPY . ./
 WORKDIR /
 EXPOSE $port
-CMD echo "Welcome docker Image"
+CMD node index.js
