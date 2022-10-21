@@ -30,10 +30,20 @@ jobs:
           # Name of the heroku application to which the build is to be sent.
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           
+      # Build Docker image
+      - name: Docker build
+        run: docker login --username=_ --password=$heroku_api_key registry.heroku.com
+      # Push the Docker image to Heroku Container Registry
+      - name: Publish
+        run: |
+          heroku container:push web -a $heroku_app_name
+          heroku container:release web -a $heroku_app_name
+
+        
           #Heroku Container Login
-          heroku container: login
+          #heroku container: login
           
           #Push the Docker imag to Heroku Container
-          #heroku container push: push gopinath003/docker-image-autobuild:latest
+          #heroku container push: heroku push gopinath003/docker-image-autobuild:latest
           
           #heroku container release: release gopinath003/docker-image-autobuild:latest 
