@@ -55,7 +55,8 @@ jobs:
           heroku container: login
           
           #Push the Docker imag to Heroku Container
-          #heroku container: login
+          heroku container push: push gopinath003/docker-image-autobuild:latest
+
 
           # (Optional, default: "web")
           # Select the process type for which you want the docker container to be uploaded.
