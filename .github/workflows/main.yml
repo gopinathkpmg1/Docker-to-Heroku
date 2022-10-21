@@ -22,7 +22,7 @@ jobs:
       - name: push the docker image
         run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_TOKEN}} && docker push gopinath003/docker-image-autobuild:latest
 
-      - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
+      - name: Heroku zlogin. # Your custom step name
         uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
         with:
           # The email address associated with your Heroku account.     
@@ -39,13 +39,5 @@ jobs:
       - name: Publish
         run: |
           heroku container:push web -a $APP_NAME
-          heroku container:release web -a $APP_NAME
-
-        
-          #Heroku Container Login
-          #heroku container: login
-          
-          #Push the Docker imag to Heroku Container
-          #heroku container push: heroku push gopinath003/docker-image-autobuild:latest
-          
-          #heroku container release: release gopinath003/docker-image-autobuild:latest 
+          heroku container:release web -a $APP_NAME       
+       
