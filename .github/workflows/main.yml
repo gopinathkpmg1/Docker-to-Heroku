@@ -34,6 +34,6 @@ jobs:
           heroku container: login
           
           #Push the Docker imag to Heroku Container
-          heroku container push: push gopinath003/docker-image-autobuild:latest
+          #heroku container push: push gopinath003/docker-image-autobuild:latest
           
-          heroku container release: release gopinath003/docker-image-autobuild:latest 
+          #heroku container release: release gopinath003/docker-image-autobuild:latest 
