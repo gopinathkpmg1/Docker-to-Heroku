@@ -32,7 +32,7 @@ jobs:
           
       # Build Docker image
       - name: Docker build
-        run: docker login --username=_ --password=$heroku_api_key registry.heroku.com
+        run: docker login --${{secrets.DOCKER_USER}}=_ --${{secrets.DOCKER_TOKEN}}=$heroku_api_key registry.heroku.com
       # Push the Docker image to Heroku Container Registry
       - name: Publish
         run: |
