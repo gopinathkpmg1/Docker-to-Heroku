@@ -34,7 +34,7 @@ jobs:
           
       # Build Docker image
       - name: Docker build
-        run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_TOKEN}} registry.heroku.com
+        run: docker login -u ${{secrets.HEROKU_EMAIL}} -p ${{secrets.heroku_api_key}} registry.heroku.com
       # Push the Docker image to Heroku Container Registry
       - name: Publish
         run: |
